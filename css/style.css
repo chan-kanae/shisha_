@@ -67,6 +67,8 @@
     margin:  auto;   
 }
 
+/* home.php */
+
 /* index.php */
 .useridBox{
     display: none;
@@ -77,6 +79,8 @@
 .date1Box{
     display: none;
 }
+
+
 
 .tabarea{
     width: 100%;

@@ -1,4 +1,5 @@
 <?php
+// おまじない＿現在地の時間を表示する
 date_default_timezone_set('Asia/Tokyo');
 ?>
 

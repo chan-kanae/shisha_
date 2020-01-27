@@ -26,7 +26,6 @@ $stmt->bindValue(':userid', $userid, PDO::PARAM_STR);
 $status = $stmt->execute();//excuteの結果をいれている
 echo '賢いのでDBにINSERTできたんですよね';
 
-
 //４．データ登録処理後
 if($status==false){
     sql_error($stmt);
@@ -36,3 +35,4 @@ else{
     exit();
 }
 ?>
+
