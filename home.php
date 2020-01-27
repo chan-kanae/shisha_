@@ -1,10 +1,11 @@
 <?php
 // DB接続する
+include("account.php");
 include("function.php");
 $pdo = db_conn();
 
 // セレクト文＿データ取得
-$select = "SELECT * FROM memo";
+$select = "SELECT * FROM memo  ORDER BY id DESC";
 $stmt2 = $pdo->prepare($select);
 $status2 = $stmt2->execute();
 // echo $status2;
@@ -32,7 +33,13 @@ $json = json_encode ($stmt2->fetchAll());
         <div class="headhome"></div>
     </div>
 
-    
+    <div class="main">
+        <div class="sdarea" id="sdarea">
+            <input type="text" name="userid" class="userid" id="useridbox">
+            <!-- データぶちこむぜえぇぇぇぇッッッッ！！！ -->
+        </div>
+    </div>
+
 
 <script>
     // jsでfor文まわしてデータ表示
@@ -40,33 +47,38 @@ $json = json_encode ($stmt2->fetchAll());
     // console.log(json);
     const js_array = JSON.parse(json);
     console.log(js_array,"JSON parseできてるよ！叶恵さん天才！一人でデバッグできてる！");
-    console.log("挙動-動いてる-！これは正義！");
-    // window.onload = function(){
-        // $("#savedata").empty();
-        // for(let i=0; i<js_array.length ;i++){
-        //     const datahtml =
-        //     "<tr class = " +
-        //     js_array[i].id +
-        //     " ><td>" +
-        //     js_array[i].name +
-        //     "</td><td>" +
-        //     js_array[i].date +
-        //     "</td><td>" +
-        //     js_array[i].date1 +
-        //     "</td><td>" +
-        //     js_array[i].spot +
-        //     "</td><td>" +
-        //     js_array[i].log +
-        //     "</td><td>" +
-        //     js_array[i].feel +
-        //     "</td><td>" +
-        //     js_array[i].userid +
-        //     "</td><td>" +
-        //     "<button class='delete' value='delete' data-key='" + js_array[i].id + "' data-userid='" + js_array[i].id + "'>削除</button>" +
-        //     "</td></tr>";
-            // $("#savedata").append(datahtml);
-        // };
-    // };
+    console.log("挙動-動いてる-！\nこれは正義！");
+    window.onload = function(){
+        for(let i=0; i<js_array.length; i++){
+            const datahtml=
+            `<div class="sdbox" id=${js_array[i].id}>
+                <div class="iconbox">
+                    <div class="uicon"></div>
+                </div>
+
+                <div class="sdchild">
+                    <div class="sdinfo">
+                        <div class="uname">${js_array[i].name}</div>
+                        <button class='edit' value='edit'
+                        data-key=${js_array[i].id} data-userid=${js_array[i].userid}>
+                        </button>
+                        <button class='delete' value='delete'
+                        data-key=${js_array[i].id} data-userid=${js_array[i].userid}>
+                        </button>
+                    </div>
+                    <div class="uspot">${js_array[i].spot} にて</div>
+                    <div class="ulog">${js_array[i].log}</div>
+                    <div class="ufeel">${js_array[i].feel}</div>
+                    <div class="uid">${js_array[i].userid}</div>
+                    <div class="udate1">${js_array[i].date1}</div>
+                    <div class="udate">${js_array[i].date}</div>
+                </div>
+            </div>
+            `
+        $("#sdarea").append(datahtml);
+        };
+    };
+    console.log("末恐ろしいな。こんなところまできたのか。");
 
 </script>
     <?php

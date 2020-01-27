@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
-#body{
+body{
     background-image: url(img/bg.png);
     background-size: cover;
     background-position: center;
@@ -18,7 +18,8 @@
     background: #469da3;
     z-index: 5;
     padding: 5px 0;
-    position: relative;
+    position: fixed;
+    top: 0;
 }
 
 .headpen{
@@ -66,8 +67,167 @@
     right:  0;
     margin:  auto;   
 }
+.main{
+    margin-top: 60px;
+}
+
+
 
 /* home.php */
+.sdarea{
+    justify-content: center;
+}
+
+.sdbox{
+    display: flex;
+    width: 92%;
+    align-items: flex-start;
+    background: #ffffff;
+    border-radius: 5px;
+    margin: 20px auto 20px auto;
+    text-align: left;
+    filter: drop-shadow(0 0 6px #585858);
+    user-select: none;
+    font-family:'Helvetica','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','Noto Sans JP','Arial',sans-serif;
+}
+
+.iconbox{
+    display: inline-block;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    width: 20%;
+    /* height: 100%; */
+    padding: 5px;
+}
+
+.uicon{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    background: #c7dcdd;
+    border: solid 1px #dbdbdb;
+    margin-top: 5px;
+    top: 0px;
+}
+
+.sdchild{
+    display: inline-block;
+    align-items: flex-start;
+    width: 90%;
+    /* height: 95%; */
+    padding: 5px 10px 5px 0;
+    top: 0px;
+}
+
+.sdinfo{
+    display: flex;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.uname{
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #404040;
+    letter-spacing: 1px;
+    padding: 5px;
+}
+
+.edit{
+    display: inline-block;
+    width: 15px;
+    height: 13px;
+    border: none;
+    background-color: #fff;
+    background-image: url("img/pencil.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+}
+.delete{
+    display: inline-block;
+    width: 15px;
+    height: 13px;
+    border: none;
+    background-color: #fff;
+    background-image: url("img/dust.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+}
+
+.uspot{
+    display: flex;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    color: #404040;
+    top: 0;
+    line-height: 20px;
+    padding: 5px;
+}
+
+.ulog{
+    display: flex;
+    top: 0px;
+    width: 95%;
+    font-size: 15px;
+    line-height: 20px;
+    background: #e8f1f1;
+    top: 0;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+
+.ufeel{
+    display: flex;
+    top: 0;
+    width: 95%;
+    font-size: 14px;
+    line-height: 22px;
+    color: #5e5e5e;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.uid{
+    display: flex;
+    top: 0;
+    width: 95%;
+    font-size: 14px;
+    line-height: 22px;
+    color: #5e5e5e;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+
+.udate1{
+    display: flex;
+    top: 0;
+    width: 95%;
+    font-size: 14px;
+    line-height: 22px;
+    color: #5e5e5e;
+    padding: 5px;}
+
+.udate{
+    /* display: flex; */
+    display: none;
+    top: 0;
+    width: 95%;
+    font-size: 14px;
+    line-height: 22px;
+    color: #5e5e5e;
+    padding: 5px;
+}
+
+
 
 /* index.php */
 .useridBox{

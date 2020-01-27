@@ -1,4 +1,4 @@
-<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase.js"></script>
     <script>
     var firebaseConfig = {
         apiKey: "AIzaSyCh6GlERuG6KGhfaLbQ7MhhkSae62zPqYE",
@@ -33,14 +33,14 @@
             newPostRef = firebase.database().ref("users/" + "posts/");
             userName = user.displayName;
             userImg = user.photoURL;
-            
             console.log=userId;
+            document.getElementById("useridbox").value=userId;
             //   console.log(user);
             //   console.log('user入りましたよ')
 
         } else {
           //Not Login
-        location.href = "login.php";
+        location.href = "login.php";location.href = "login.php";
         }
       }); //ログインチェックの閉じタグ
 
