@@ -20,7 +20,7 @@ date_default_timezone_set('Asia/Tokyo');
         
     <div class="main">    
     <form method="POST" action="input.php">
-        <input type="text" name="userid" class="userid" id="useridbox">
+        <input type="text" name="userid" class="useridbox" id="useridbox">
         <!-- <div class="useridBox">Userid<input type="text" name="userid" class="userid" id="useridbox"></div> -->
         <div class="dateBox">Date<input type="text" name="date" value="<?php echo date("Y-m-d H:i:s")?>"></div>
         <div class="date1Box">Date1<input type="text" name="date1" value="<?php echo date("Y-m-d")?>"></div>

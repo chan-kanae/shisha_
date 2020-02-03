@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+// useridをセッションに持たせる
+// $_SESSION["sessionuserId"] = $_POST["userid"];
+// echo $_SESSION["sessionuserId"];
+
 
 ?>
 

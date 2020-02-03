@@ -8,6 +8,7 @@ $log = $_POST["log"];
 $feel = $_POST["feel"];
 $userid = $_POST["userid"];
 
+
 //2. DB接続します
 //*** function化する！  *****************
 include("function.php");
