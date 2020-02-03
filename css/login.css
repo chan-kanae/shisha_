@@ -1,0 +1,39 @@
+body{
+    background-image: url("img/bglogin3.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    /* background: #eee; */
+    text-align: center;
+    color: #2D4C75;
+    width: 100%;
+}
+
+@media screen and (max-width:480px){
+.title{
+        display: inline-block;
+        font-size: 58px;
+        font-weight: 600;
+        margin: 60% 0 0 0;
+        text-shadow: 4px 4px 3px #808080;
+        letter-spacing: -0.5px;
+        font-family: 'Times New Roman',sans-serif;
+    }
+        
+    .forgot{
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        font-family: YuGothic,'Yu Gothic',sans-serif;
+        margin-top: 15px;
+    }
+    
+    #loder{
+        display: block;
+        padding: 100px;
+        margin-top: 15px;
+        padding: 15px;
+    }
+}

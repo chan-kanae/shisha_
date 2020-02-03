@@ -1,45 +1,3 @@
-<?php
-// おまじない＿現在地の時間を表示する
-date_default_timezone_set('Asia/Tokyo');
-?>
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-    <title>SHISHA Log</title>
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-<body id="body">
-    <div class="header">
-        <div class="headpen"></div>
-    </div>    
-        
-    <div class="main">    
-    <form method="POST" action="input.php">
-        <input type="text" name="userid" class="useridbox" id="useridbox">
-        <div class="dateBox">Date<input type="text" name="date" value="<?php echo date("Y-m-d H:i:s")?>"></div>
-        <div class="date1Box">Date1<input type="text" name="date1" value="<?php echo date("Y-m-d")?>"></div>
-        <div>Name<input type="text" name="name"></div>
-        <div>Spot<input type="text" name="spot"></div>
-        <div>Log<textArea name="log"></textArea></div>
-        <div>Feel<textArea name="feel"></textArea></div>
-        <input type="submit" value="送信">
-
-    </form>
-
-        <?php
-        include "menu.php";
-        ?>
-    </div> <!-- main閉じタグ -->
-
-    <!-- google map api -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh6GlERuG6KGhfaLbQ7MhhkSae62zPqYE"
-    ></script>
-    
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase.js"></script>
     <script>
     var firebaseConfig = {
@@ -67,20 +25,19 @@ date_default_timezone_set('Asia/Tokyo');
       //Firebase ログインチェック処理
     let userId, userName, userImg;
     firebase.auth().onAuthStateChanged(function (user) {
-        //ログインしていればuserへデータを取得
         if (user) {
-            user = firebase.auth().currentUser; //
+            user = firebase.auth().currentUser;
             userId = user.uid;
+            localStorage.setItem('lsuserId', userId);//localstorageにuserId保存
             // newPostRef=firebase.database().ref();
             newPostRef = firebase.database().ref("users/" + "posts/");
             userName = user.displayName;
             userImg = user.photoURL;
-            
-            console.log=userId;
-            document.getElementById("useridbox").value=userId;
+            // console.log (userId);
+            // document.getElementById("useridbox").value=userId;
         } else {
           //Not Login
-        location.href = "login.php";
+        location.href = "login.php";location.href = "login.php";
         }
       }); //ログインチェックの閉じタグ
 
@@ -96,7 +53,3 @@ date_default_timezone_set('Asia/Tokyo');
     // };
     
     </script>
-
-<script src="main.js"></script>
-</body>
-</html>
