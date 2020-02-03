@@ -6,10 +6,8 @@ session_start();
 include("function.php");
 $pdo = db_conn();
 
-
-
 // セレクト文＿データ取得
-$select = "SELECT * FROM memo  ORDER BY id DESC";
+$select = "SELECT * FROM memo ORDER BY id DESC";
 $stmt2 = $pdo->prepare($select);
 $status2 = $stmt2->execute();
 // echo $status2;
@@ -58,7 +56,6 @@ $json = json_encode ($stmt2->fetchAll());
     console.log(js_array,"JSON parseできてるよ！叶恵さん天才！一人でデバッグできてる！");
     console.log("挙動-動いてる-！\nこれは正義！");
 
-
     window.onload = function(){
     //ログインしているuseridとメモのuidが一致する場合、編集アイコンと削除アイコンを表示
         for(let i=0; i<js_array.length; i++){
@@ -73,12 +70,14 @@ $json = json_encode ($stmt2->fetchAll());
                     <div class="sdchild">
                         <div class="sdinfo">
                             <div class="uname">${js_array[i].name}</div>
-                            <button class='edit' value='edit'
-                            data-key=${js_array[i].id} data-userid=${js_array[i].userid}>
-                            </button>
-                            <button class='delete' value='delete'
-                            data-key=${js_array[i].id} data-userid=${js_array[i].userid}>
-                            </button>
+                            <a href="edit.php?id= + ${js_array[i].id} + ">
+                                <button class='edit' data-key=${js_array[i].id}>
+                                </button>
+                            </a>
+                            <a href="delete.php?id= + ${js_array[i].id} + ">
+                                <button class='delete' data-key=${js_array[i].id}>
+                                </button>
+                            </a>
                         </div>
                         <div class="uspot">${js_array[i].spot} にて</div>
                         <div class="ulog">${js_array[i].log}</div>

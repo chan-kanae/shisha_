@@ -73,7 +73,7 @@ body{
 }
 
 .useridbox{
-    display: none;
+    /* display: none; */
 }
 .lsuserIdbox{
     display: none;
@@ -247,10 +247,10 @@ body{
     display: none;
 }
 .dateBox{
-    display: none;
+    /* display: none; */
 }
 .date1Box{
-    display: none;
+    /* display: none; */
 }
 
 

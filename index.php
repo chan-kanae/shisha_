@@ -21,7 +21,6 @@ date_default_timezone_set('Asia/Tokyo');
     <div class="main">    
     <form method="POST" action="input.php">
         <input type="text" name="userid" class="useridbox" id="useridbox">
-        <!-- <div class="useridBox">Userid<input type="text" name="userid" class="userid" id="useridbox"></div> -->
         <div class="dateBox">Date<input type="text" name="date" value="<?php echo date("Y-m-d H:i:s")?>"></div>
         <div class="date1Box">Date1<input type="text" name="date1" value="<?php echo date("Y-m-d")?>"></div>
         <div>Name<input type="text" name="name"></div>
@@ -30,28 +29,12 @@ date_default_timezone_set('Asia/Tokyo');
         <div>Feel<textArea name="feel"></textArea></div>
         <input type="submit" value="送信">
 
-        <!-- <div id="buttonbox">
-            <input type="submit" value="Save" id="save">
-            <button type=button id="clear">Clear</button>
-        </div> -->
-
     </form>
 
         <?php
         include "menu.php";
         ?>
     </div> <!-- main閉じタグ -->
-
-    <!-- メニューバー -->
-    <!-- <div class="tabarea">
-        <div class="tab1" for="tab1">
-            <h1>Memo</h1>
-        </div>
-        <div class="tab2" for="tab2">
-            <h2>SaveData</h2>
-        </div>
-    </div> -->
-            
 
     <!-- google map api -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh6GlERuG6KGhfaLbQ7MhhkSae62zPqYE"
