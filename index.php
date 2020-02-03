@@ -38,7 +38,7 @@ date_default_timezone_set('Asia/Tokyo');
     </form>
 
         <?php
-        include "menu.html";
+        include "menu.php";
         ?>
     </div> <!-- main閉じタグ -->
 

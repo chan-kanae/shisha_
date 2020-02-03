@@ -2,7 +2,7 @@
 session_start();
 
 // DB接続
-include("account.php");
+// include("account.php");
 include("function.php");
 $pdo = db_conn();
 
@@ -112,13 +112,13 @@ $json = json_encode ($stmt2->fetchAll());
                 $("#sdarea").append(dataHtmlFalse);
             }
         }
-    console.log("制御できてるうううぅぅぅッッッ！！\n泣いていいよ");
+    console.log("制御できてるうううぅぅぅッッッ！！\n\n泣いていいよ");
     };
     console.log("末恐ろしいな。こんなところまできたのか。");
 
 </script>
     <?php
-        include "menu.html";
+        include "menu.php";
     ?>
 </body>
 </html>

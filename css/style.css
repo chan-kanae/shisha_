@@ -78,6 +78,9 @@ body{
 .lsuserIdbox{
     display: none;
 }
+.sessionUserId{
+    display: none;
+}
 
 /* home.php */
 .sdarea{
@@ -285,13 +288,15 @@ body{
 }
 .tab3{
     display: inline-block;
+    background: none;
     background-image: url(img/human.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border: none;
     width: 30px;
     height: 30px;
+    font-size: 0;
 }
-
 
 }
