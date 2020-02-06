@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // おまじない＿現在地の時間を表示する
 date_default_timezone_set('Asia/Tokyo');
 ?>
@@ -18,71 +20,39 @@ date_default_timezone_set('Asia/Tokyo');
         <div class="headpen"></div>
     </div>    
         
-    <div class="main">    
-    <form method="POST" action="input.php">
-        <input type="text" name="userid" class="useridbox" id="useridbox">
-        <div class="dateBox">Date<input type="text" name="date" value="<?php echo date("Y-m-d H:i:s")?>"></div>
-        <div class="date1Box">Date1<input type="text" name="date1" value="<?php echo date("Y-m-d")?>"></div>
-        <div>Name<input type="text" name="name"></div>
-        <div>Spot<input type="text" name="spot"></div>
-        <div>Log<textArea name="log"></textArea></div>
-        <div>Feel<textArea name="feel"></textArea></div>
-        <input type="submit" value="送信">
-
-    </form>
+    <div class="main mainpc">
+        <div class="memofield">
+            <form method="POST" action="input.php" class="memo">
+            <!-- <form method="POST" action="https://{$_SERVER['HTTP_HOST']}/shisha_/input.php" class="memo"> -->
+                <input type="text" name="userid" class="useridbox" id="useridbox">
+                <h1 class="dateBox">Date
+                    <input type="text" name="date" value="<?php echo date("Y-m-d H:i:s")?>">
+                </h1>
+                <h1 class="date1Box">Date1
+                    <input type="text" name="date1" value="<?php echo date("Y-m-d")?>">
+                </h1>
+                <h1 class="memotitle">Name</h1>
+                <input type="text" name="name" class="input name">
+                <h1 class="memotitle">Spot</h1>
+                <input type="text" name="spot" class="input spot">
+                <h1 class="memotitle">Log</h1>
+                <textArea name="log" placeholder="フレーバーを書き留める" class="input log"></textArea>
+                <h1 class="memotitle">Feel</h1>
+                <textArea name="feel" placeholder="感動を表現する" class="input feel"></textArea>
+                <input type="submit" value="Save" class="SaveButton">
+            </form>
+        </div>
 
         <?php
         include "menu.php";
         ?>
     </div> <!-- main閉じタグ -->
 
-    <!-- google map api -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh6GlERuG6KGhfaLbQ7MhhkSae62zPqYE"
-    ></script>
-    
-    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase.js"></script>
-    <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyCh6GlERuG6KGhfaLbQ7MhhkSae62zPqYE",
-        authDomain: "shisha-log-9ea19.firebaseapp.com",
-        databaseURL: "https://shisha-log-9ea19.firebaseio.com",
-        projectId: "shisha-log-9ea19",
-        storageBucket: "shisha-log-9ea19.appspot.com",
-        messagingSenderId: "399008856070",
-        appId: "1:399008856070:web:ee87a7044551d89e2e6b87",
-        measurementId: "G-W0W7HRFHPD"
-    };
-      // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-      // firebase.analytics();
-
-      // リアルタイム通信;
-    let newPostRef;
-      //  firebase.database().ref('users/' +userId);
-    //   console.log(newPostRef);
-
-      //----------------------------------------------------
-      // Login Check
-      //----------------------------------------------------
-      //Firebase ログインチェック処理
-    let userId, userName, userImg;
-    firebase.auth().onAuthStateChanged(function (user) {
-        //ログインしていればuserへデータを取得
-        if (user) {
-            user = firebase.auth().currentUser; //
-            userId = user.uid;
-            // newPostRef=firebase.database().ref();
-            newPostRef = firebase.database().ref("users/" + "posts/");
-            userName = user.displayName;
-            userImg = user.photoURL;
-            
-            console.log=userId;
-            document.getElementById("useridbox").value=userId;
-        } else {
-          //Not Login
-        location.href = "login.php";
-        }
-      }); //ログインチェックの閉じタグ
+<script>
+    const getlsuserId = localStorage.getItem('lsuserId');
+    // console.log(getlsuserId);
+    const lsuserId = document.getElementById("useridbox").value=getlsuserId;
+    // console.log(lsuserId);
 
       //----------------------------------------------------
       //Sign Out

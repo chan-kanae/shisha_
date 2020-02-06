@@ -2,20 +2,18 @@
 session_start();
 
 // DB接続
-// include("account.php");
+include("account.php");
 include("function.php");
 $pdo = db_conn();
 
 // セレクト文＿データ取得
-$select = "SELECT * FROM memo ORDER BY id DESC";
+$select = "SELECT * FROM memo ORDER BY date DESC";
 $stmt2 = $pdo->prepare($select);
 $status2 = $stmt2->execute();
 // echo $status2;
 
 // jsonにしてjsにわたす
 $json = json_encode ($stmt2->fetchAll());
-// echo'json形式にできてるよ！天才！';
-// echo $json;
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +32,7 @@ $json = json_encode ($stmt2->fetchAll());
         <div class="headhome"></div>
     </div>
 
-    <div class="main">
+    <div class="main mainpc">
         <div class="sdarea" id="sdarea">
             <input type="text" name="lsuserIdbox" class="lsuserIdbox" id="lsuserIdbox">
             <!-- データぶちこむぜえぇぇぇぇッッッッ！！！ -->
@@ -53,7 +51,8 @@ $json = json_encode ($stmt2->fetchAll());
     const json = <?=json_encode($json)?>;
     // console.log(json);
     const js_array = JSON.parse(json);
-    console.log(js_array,"JSON parseできてるよ！叶恵さん天才！一人でデバッグできてる！");
+    // console.log(js_array);
+    console.log("JSON parseできてるよ！天才");
     console.log("挙動-動いてる-！\nこれは正義！");
 
     window.onload = function(){

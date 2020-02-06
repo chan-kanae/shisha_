@@ -37,7 +37,8 @@
             // document.getElementById("useridbox").value=userId;
         } else {
           //Not Login
-        location.href = "login.php";location.href = "login.php";
+        location.href = "login.php";
+        // location.href = "https://{$_SERVER['HTTP_HOST']}/shisha_/login.php";
         }
       }); //ログインチェックの閉じタグ
 

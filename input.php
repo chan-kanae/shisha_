@@ -33,6 +33,7 @@ if($status==false){
 }
 else{
     header("Location: home.php");
+    // header("Location: https://{$_SERVER['HTTP_HOST']}/shisha_/home.php");
     exit();
 }
 ?>
