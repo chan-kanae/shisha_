@@ -25,7 +25,7 @@ $stmt->bindValue(':log', $log, PDO::PARAM_STR);
 $stmt->bindValue(':feel', $feel, PDO::PARAM_STR);
 $stmt->bindValue(':userid', $userid, PDO::PARAM_STR);
 $status = $stmt->execute();//excuteの結果をいれている
-echo '賢いのでDBにINSERTできたんですよね';
+// echo '賢いのでDBにINSERTできたんですよね';
 
 //４．データ登録処理後
 if($status==false){
@@ -33,6 +33,7 @@ if($status==false){
 }
 else{
     header("Location: home.php");
+    // header("Location: https://{$_SERVER['HTTP_HOST']}/shisha_/home.php");
     exit();
 }
 ?>

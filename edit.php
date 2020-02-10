@@ -32,18 +32,29 @@ $row = $stmt->fetch();//$row["id"]
         <div class="headpen"></div>
     </div>    
         
-    <div class="main">    
-    <form method="POST" action="update.php">
-        <input type="text" name="userid" class="useridbox" id="useridbox" value="<?=$row["userid"]?>">
-        <div class="dateBox">Date<input type="text" name="date" value="<?=$row["date"]?>"></div>
-        <div class="date1Box">Date1<input type="text" name="date1" value="<?=$row["date1"]?>"></div>
-        <div>Name<input type="text" name="name" value="<?=$row["name"]?>"></div>
-        <div>Spot<input type="text" name="spot" value="<?=$row["spot"]?>"></div>
-        <div>Log<input name="log" value="<?=$row["log"]?>"></input></div>
-        <div>Feel<input name="feel" value="<?=$row["feel"]?>"></input></div>
-        <input type="hidden" name="id" value="<?=$row["id"]?>">
-        <input type="submit" value="送信">
-    </form>
+    <div class="main mainpc">
+        <div class="memofield">
+            <form method="POST" action="update.php" class="memo">
+            <!-- <form method="POST" action="https://{$_SERVER['HTTP_HOST']}/shisha_/update.php" class="memo"> -->
+                <input type="text" name="userid" class="useridbox" id="useridbox" value="<?=$row["userid"]?>">
+                <h1 class="dateBox">Date
+                    <input type="text" name="date" value="<?=$row["date"]?>">
+                </h1>
+                <h1 class="date1Box">Date1
+                    <input type="text" name="date1" value="<?=$row["date1"]?>">
+                </h1>
+                <h1 class="memotitle">Name</h1>
+                <input type="text" name="name" class="input name" value="<?=$row["name"]?>">
+                <h1 class="memotitle">Spot</h1>
+                <input type="text" name="spot" class="input spot" value="<?=$row["spot"]?>">
+                <h1 class="memotitle">Log</h1>
+                <textarea name="log" class="input log"><?=$row["log"]?></textarea>
+                <h1 class="memotitle">Feel</h1>
+                <textarea name="feel" class="input feel"><?=$row["feel"]?></textarea>
+                <input type="hidden" name="id" value="<?=$row["id"]?>">
+                <input type="submit" value="Save" class="SaveButton">
+            </form>
+        </div>
 
         <?php
         include "menu.php";

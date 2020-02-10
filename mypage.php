@@ -6,7 +6,7 @@ $pdo = db_conn();
 $myuserId = $_SESSION["sessionUserId"];
 
 // セレクト文＿データ取得
-$select = "SELECT * FROM memo WHERE userid=:myuserId ORDER BY id DESC ";
+$select = "SELECT * FROM memo WHERE userid=:myuserId ORDER BY date DESC ";
 $stmt2 = $pdo->prepare($select);
 $stmt2 -> bindValue(':myuserId',$myuserId);
 $status2 = $stmt2->execute();
@@ -32,7 +32,7 @@ $json = json_encode ($stmt2->fetchAll());
     <div class="header">
         <div class="headhuman"></div>
     </div>
-    <div class="main">
+    <div class="main mainpc">
         <div class="sdarea" id="sdarea">
             <!-- データぶちこむぜえぇぇぇぇッッッッ！！！ -->
         </div>
@@ -43,7 +43,8 @@ $json = json_encode ($stmt2->fetchAll());
     const json = <?=json_encode($json)?>;
     // console.log(json);
     const js_array = JSON.parse(json);
-    console.log(js_array,"JSON parseできてるよ！叶恵さん天才！一人でデバッグできてる！");
+    // console.log(js_array);
+    console.log("JSON parseできてるよ！天才");
     console.log("挙動-動いてる-！\nこれは正義！");
 
 

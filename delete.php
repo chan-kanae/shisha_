@@ -30,6 +30,7 @@ if($status==false){
 }else{
     function redirect(){
         header("Location: home.php");
+        // header("Location: https://{$_SERVER['HTTP_HOST']}/shisha_/home.php");
         exit();
     }
     redirect();

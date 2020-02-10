@@ -7,8 +7,8 @@ function h($str){
 //DB接続： db_conn()
 function db_conn(){
 try {
-    return new PDO('mysql:dbname=mydb;charset=utf8;host=localhost','root','root');
-    // return new PDO('mysql:dbname=harumaru_rock;charset=utf8;host=mysql743.db.sakura.ne.jp','harumaru','ns59hmengn'); //さくらインターネットの時はここをかえる
+    // return new PDO('mysql:dbname=mydb;charset=utf8;host=localhost','root','root');
+    return new PDO('mysql:dbname=chan-kanae_shisha_log;charset=utf8;host=mysql57.chan-kanae.sakura.ne.jp','chan-kanae','kanae1358'); //さくらインターネットの時はここをかえる
     } catch (PDOException $e) {
     exit('DB Connection Error:'.$e->getMessage());
     }

@@ -7,6 +7,7 @@ $_SESSION["sessionUserId"] = $_POST["sessionUserId"];
 
 function redirect(){
     header("Location: mypage.php");
+    // header("Location: https://{$_SERVER['HTTP_HOST']}/shisha_/mypage.php");
     exit();
 }
 redirect();
