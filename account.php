@@ -23,24 +23,24 @@
       // Login Check
       //----------------------------------------------------
       //Firebase ログインチェック処理
-    let userId, userName, userImg;
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            user = firebase.auth().currentUser;
-            userId = user.uid;
-            localStorage.setItem('lsuserId', userId);//localstorageにuserId保存
-            // newPostRef=firebase.database().ref();
-            newPostRef = firebase.database().ref("users/" + "posts/");
-            userName = user.displayName;
-            userImg = user.photoURL;
-            // console.log (userId);
-            // document.getElementById("useridbox").value=userId;
-        } else {
-          //Not Login
-        location.href = "login.php";
-        // location.href = "https://{$_SERVER['HTTP_HOST']}/shisha_/login.php";
-        }
-      }); //ログインチェックの閉じタグ
+    // let userId, userName, userImg;
+    // firebase.auth().onAuthStateChanged(function (user) {
+    //     if (user) {
+    //         user = firebase.auth().currentUser;
+    //         userId = user.uid;
+    //         localStorage.setItem('lsuserId', userId);//localstorageにuserId保存
+    //         // newPostRef=firebase.database().ref();
+    //         newPostRef = firebase.database().ref("users/" + "posts/");
+    //         userName = user.displayName;
+    //         userImg = user.photoURL;
+    //         // console.log (userId);
+    //         // document.getElementById("useridbox").value=userId;
+    //     } else {
+    //       //Not Login
+    //     location.href = "login.php";
+    //     // location.href = "https://{$_SERVER['HTTP_HOST']}/shisha_/login.php";
+    //     }
+    //   }); //ログインチェックの閉じタグ
 
       //----------------------------------------------------
       //Sign Out

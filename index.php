@@ -36,10 +36,16 @@ date_default_timezone_set('Asia/Tokyo');
                 <h1 class="memotitle">Spot</h1>
                 <input type="text" name="spot" class="input spot">
                 <h1 class="memotitle">Log</h1>
-                <textArea name="log" placeholder="フレーバーを書き留める" class="input log"></textArea>
+                <div class="tabox">
+                    <textArea name="log" placeholder="フレーバーを書き留める" class="log"></textArea>
+                </div>
                 <h1 class="memotitle">Feel</h1>
-                <textArea name="feel" placeholder="感動を表現する" class="input feel"></textArea>
-                <input type="submit" value="Save" class="SaveButton">
+                <div class="tabox">
+                    <textArea name="feel" placeholder="感動を表現する" class="feel"></textArea>
+                </div>
+                <!-- <div class="sbb"> -->
+                    <input type="submit" value="Save" class="SaveButton">
+                <!-- </div> -->
             </form>
         </div>
 

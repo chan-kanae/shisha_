@@ -1,5 +1,5 @@
 <?php
-include("account.php");
+// include("account.php");
 
 ?>
 
