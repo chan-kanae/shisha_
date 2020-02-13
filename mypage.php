@@ -45,7 +45,7 @@ $json = json_encode ($stmt2->fetchAll());
     const js_array = JSON.parse(json);
     // console.log(js_array);
     console.log("JSON parseできてるよ！天才");
-    console.log("挙動-動いてる-！\nこれは正義！");
+    console.log("挙動している！\nこれは正義！");
 
 
     window.onload = function(){

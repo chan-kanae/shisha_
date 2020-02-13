@@ -48,9 +48,13 @@ $row = $stmt->fetch();//$row["id"]
                 <h1 class="memotitle">Spot</h1>
                 <input type="text" name="spot" class="input spot" value="<?=$row["spot"]?>">
                 <h1 class="memotitle">Log</h1>
-                <textarea name="log" class="input log"><?=$row["log"]?></textarea>
+                <div class="tabox">
+                    <textArea name="log" class="log"><?=$row["log"]?></textArea>
+                </div>
                 <h1 class="memotitle">Feel</h1>
-                <textarea name="feel" class="input feel"><?=$row["feel"]?></textarea>
+                <div class="tabox">
+                    <textArea name="feel" class="feel"><?=$row["feel"]?></textArea>
+                </div>
                 <input type="hidden" name="id" value="<?=$row["id"]?>">
                 <input type="submit" value="Save" class="SaveButton">
             </form>
