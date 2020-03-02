@@ -47,7 +47,7 @@ $row = $stmt->fetch();//$row["id"]
                 <input type="text" name="name" class="input name" value="<?=$row["name"]?>">
                 <h1 class="memotitle">Spot</h1>
                 <input type="text" name="spot" class="input spot" value="<?=$row["spot"]?>">
-                <h1 class="memotitle">Log</h1>
+                <h1 class="memotitle">Flavor</h1>
                 <div class="tabox">
                     <textArea name="log" class="log"><?=$row["log"]?></textArea>
                 </div>

@@ -1,19 +1,24 @@
 <?php
 session_start();
 
-// DB接続
-// include("account.php");
 include("function.php");
 $pdo = db_conn();
+$myUserId = $_SESSION["bmUserId"];
+// echo $myUserId;
+// echo $UserId;
 
 // セレクト文＿データ取得
-$select = "SELECT * FROM memo ORDER BY date DESC";
+$select = "SELECT * FROM bookmark inner join memo on bookmark.memo_id = memo.id AND bookmark.user_id=:myUserId ORDER BY bookmark.id DESC";
 $stmt2 = $pdo->prepare($select);
+$stmt2 -> bindValue(':myUserId',$myUserId);
 $status2 = $stmt2->execute();
 // echo $status2;
+// echo '</br>';
 
 // jsonにしてjsにわたす
 $json = json_encode ($stmt2->fetchAll());
+// echo $json;
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +34,7 @@ $json = json_encode ($stmt2->fetchAll());
 </head>
 <body>
     <div class="header">
-        <div class="headhome"></div>
+        <div class="headbm"></div>
     </div>
 
     <div class="main">
@@ -76,7 +81,6 @@ $json = json_encode ($stmt2->fetchAll());
                                 </button>
                             </a>
                             <form action="bookmarkregi.php" method="POST">
-                                <input type="text" name="bmrUserId" value="${getlsuserId}" class="hide">
                                 <input type="text" name="memoid" value="${js_array[i].id}" class="hide">
                                 <input type="text" name="userid" value="${lsuserId}" class="hide">
                                 <input type="submit" class="bukuma">
@@ -102,7 +106,6 @@ $json = json_encode ($stmt2->fetchAll());
                         <div class="sdinfo">
                             <div class="uname">${js_array[i].name}</div>
                             <form action="bookmarkregi.php" method="POST">
-                                <input type="text" name="bmrUserId" value="${getlsuserId}" class="hide">
                                 <input type="text" name="memoid" value="${js_array[i].id}" class="hide">
                                 <input type="text" name="userid" value="${lsuserId}" class="hide">
                                 <input type="submit" class="bukuma">
@@ -120,9 +123,7 @@ $json = json_encode ($stmt2->fetchAll());
                 $("#sdarea").append(dataHtmlFalse);
             }
         };
-    console.log("制御できてるうううぅぅぅッッッ！！\n\n泣いていいよ");
     };
-    console.log("末恐ろしいな。こんなところまできたのか。");
 
 </script>
     <?php
