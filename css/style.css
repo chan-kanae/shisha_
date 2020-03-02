@@ -69,6 +69,21 @@ body{
     right:  0;
     margin:  auto;   
 }
+.headbm{
+    display: inline-block;
+    background-image: url(img/bookmark.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 25px;
+    position: absolute;
+    top:  0;
+    bottom:  0;
+    left:  0;
+    right:  0;
+    margin:  auto;   
+}
 
 .main{
     margin: 55px 0 70px 0;
@@ -83,7 +98,13 @@ body{
 .sessionUserId{
     display: none;
 }
+.bmUserId{
+    display: none;
+}
 
+.hide{
+    display: none;
+}
 /* home.php */
 .sdarea{
     justify-content: center;
@@ -136,8 +157,9 @@ body{
     display: flex;
     align-items: center;
     top: 0;
-    width: 100%;
+    width: 95%;
     justify-content: space-between;
+    padding-right: 5px;
 }
 
 .uname{
@@ -174,7 +196,20 @@ body{
     background-repeat: no-repeat;
     opacity: 0.4;
 }
-
+.bukuma{
+    display: inline-block;
+    width: 15px;
+    height: 20px;
+    border: none;
+    background-color: #fff;
+    background-image: url("img/bm.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    margin-right: 5px;
+    font-size: 0;
+}
 .uspot{
     display: flex;
     top: 0px;
@@ -386,6 +421,18 @@ body{
     background-repeat: no-repeat;
     border: none;
     width: 25px;
+    height: 25px;
+    font-size: 0;
+}
+.tab4{
+    display: inline-block;
+    background: none;
+    background-image: url(img/bookmark.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    width: 20px;
     height: 25px;
     font-size: 0;
 }
@@ -462,7 +509,9 @@ body{
 .sessionUserId{
     display: none;
 }
-
+.bmUserId{
+    display: none;
+}
 /* home.php */
 .sdarea{
     justify-content: center;
@@ -768,4 +817,15 @@ body{
     height: 25px;
     font-size: 0;
 }
-
+.tab4{
+    display: inline-block;
+    background: none;
+    background-image: url(img/bookmark.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    width: 20px;
+    height: 25px;
+    font-size: 0;
+}

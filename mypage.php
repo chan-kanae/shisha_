@@ -34,6 +34,7 @@ $json = json_encode ($stmt2->fetchAll());
     </div>
     <div class="main mainpc">
         <div class="sdarea" id="sdarea">
+            <input type="text" name="lsuserIdbox" class="lsuserIdbox" id="lsuserIdbox">
             <!-- データぶちこむぜえぇぇぇぇッッッッ！！！ -->
         </div>
     </div><!-- main閉じタグ -->
@@ -45,8 +46,10 @@ $json = json_encode ($stmt2->fetchAll());
     const js_array = JSON.parse(json);
     // console.log(js_array);
     console.log("JSON parseできてるよ！天才");
-    console.log("挙動-動いてる-！\nこれは正義！");
+    console.log("挙動している！\nこれは正義！");
 
+    const getlsuserId = localStorage.getItem('lsuserId');
+    const lsuserId = document.getElementById("lsuserIdbox").value=getlsuserId;
 
     window.onload = function(){
         for(let i=0; i<js_array.length; i++){
@@ -58,12 +61,20 @@ $json = json_encode ($stmt2->fetchAll());
                 <div class="sdchild">
                     <div class="sdinfo">
                         <div class="uname">${js_array[i].name}</div>
-                        <button class='edit' value='edit'
-                        data-key=${js_array[i].id} data-userid=${js_array[i].userid}>
-                        </button>
-                        <button class='delete' value='delete'
-                        data-key=${js_array[i].id} data-userid=${js_array[i].userid}>
-                        </button>
+                        <a href="edit.php?id= + ${js_array[i].id} + ">
+                            <button class='edit' data-key=${js_array[i].id}>
+                            </button>
+                        </a>
+                        <a href="delete.php?id= + ${js_array[i].id} + ">
+                            <button class='delete' data-key=${js_array[i].id}>
+                            </button>
+                        </a>
+                        <form action="bookmarkregi.php" method="POST">
+                            <input type="text" name="bmrUserId" value="${getlsuserId}" class="hide">
+                            <input type="text" name="memoid" value="${js_array[i].id}" class="hide">
+                            <input type="text" name="userid" value="${lsuserId}" class="hide">
+                            <input type="submit" class="bukuma">
+                        </form>
                     </div>
                     <div class="uspot">${js_array[i].spot} にて</div>
                     <div class="ulog">${js_array[i].log}</div>
