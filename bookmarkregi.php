@@ -37,7 +37,7 @@ if($status==false){
 }
 else{
     header("Location: bookmark.php");
-    // header("Location: https://{$_SERVER['HTTP_HOST']}/shisha_/home.php");
+    // header("Location: https://{$_SERVER['HTTP_HOST']}/shisha_/bookmark.php");
     exit();
 }
 
