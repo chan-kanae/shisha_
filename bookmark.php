@@ -45,6 +45,10 @@ $json = json_encode ($stmt2->fetchAll());
     </div>
     
 <script>
+    $(window).on('load',function(){
+        $(".bmi").attr("src","css/img/bmf.png");
+    });
+
     const getlsuserId = localStorage.getItem('lsuserId');
     // console.log(getlsuserId);
     const lsuserId = document.getElementById("lsuserIdbox").value=getlsuserId;
@@ -80,11 +84,6 @@ $json = json_encode ($stmt2->fetchAll());
                                 <button class='delete' data-key=${js_array[i].id}>
                                 </button>
                             </a>
-                            <form action="bookmarkregi.php" method="POST">
-                                <input type="text" name="memoid" value="${js_array[i].id}" class="hide">
-                                <input type="text" name="userid" value="${lsuserId}" class="hide">
-                                <input type="submit" class="bukuma">
-                            </form>
                         </div>
                         <div class="uspot">${js_array[i].spot} にて</div>
                         <div class="ulog">${js_array[i].log}</div>
@@ -105,11 +104,6 @@ $json = json_encode ($stmt2->fetchAll());
                     <div class="sdchild">
                         <div class="sdinfo">
                             <div class="uname">${js_array[i].name}</div>
-                            <form action="bookmarkregi.php" method="POST">
-                                <input type="text" name="memoid" value="${js_array[i].id}" class="hide">
-                                <input type="text" name="userid" value="${lsuserId}" class="hide">
-                                <input type="submit" class="bukuma">
-                            </form>
                         </div>
                         <div class="uspot">${js_array[i].spot} にて</div>
                         <div class="ulog">${js_array[i].log}</div>

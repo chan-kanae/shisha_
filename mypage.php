@@ -40,6 +40,10 @@ $json = json_encode ($stmt2->fetchAll());
     </div><!-- main閉じタグ -->
 
 <script>
+    $(window).on('load',function(){
+        $(".mpi").attr("src","css/img/humann.png");
+    });
+
     // jsでfor文まわしてデータ表示
     const json = <?=json_encode($json)?>;
     // console.log(json);
