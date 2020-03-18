@@ -66,7 +66,6 @@ class MemoTemporariesController extends Controller
         return redirect('hometl');
     }
     
-
     // 投稿を削除
     public function delete( MemoTemporary $post )
     {
