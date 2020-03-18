@@ -8,10 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'SHISHA Log') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -29,7 +30,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'SHISHA Log') }}
                     </a>
                 </div>
 
@@ -55,7 +56,7 @@
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                    document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
@@ -76,5 +77,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    @yield('script')
 </body>
 </html>
