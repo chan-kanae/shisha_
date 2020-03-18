@@ -1,5 +1,5 @@
 <?php
-include("account.php");
+// include("account.php");
 
 ?>
 
@@ -12,24 +12,31 @@ include("account.php");
     <title>mypagecon</title>
 </head>
 <body>
-    <div class="tabarea">
-        <a href="home.php">
-            <div class="tab1" for="tab1" >
-            </div>
-        </a>
-        <a href="index.php">
-            <div class="tab2" for="tab2">
-            </div>
-        </a>
-        <form action="mypagecon.php" method="POST">
-            <input type="text" name="sessionUserId" class="sessionUserId" id="sessionUserId">
-            <input type="submit" class="tab3">
-        </form>
-    </div> 
+    <div class="main">
+        <div class="tabarea">
+            <a href="home.php">
+                <div class="tab1" for="tab1" >
+                </div>
+            </a>
+            <a href="index.php">
+                <div class="tab2" for="tab2">
+                </div>
+            </a>
+            <form action="mypagecon.php" method="POST">
+                <input type="text" name="sessionUserId" class="sessionUserId" id="sessionUserId">
+                <input type="submit" class="tab3">
+            </form>
+            <form action="bookmarkcon.php" method="POST">
+                <input type="text" name="bmUserId" class="bmUserId" id="bmUserId">
+                <input type="submit" class="tab4">
+            </form>
+        </div> 
+    </div>
 <script>
     const localuserId = localStorage.getItem('lsuserId');
     // console.log(localuserId);
     const sessionUserId = document.getElementById("sessionUserId").value = localuserId;
+    const bookmarkUserId = document.getElementById("bmUserId").value = localuserId;
     // console.log("天才天才天才！！！");
 </script>
 </body>

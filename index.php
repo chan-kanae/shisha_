@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // おまじない＿現在地の時間を表示する
 date_default_timezone_set('Asia/Tokyo');
 ?>
@@ -18,88 +20,45 @@ date_default_timezone_set('Asia/Tokyo');
         <div class="headpen"></div>
     </div>    
         
-    <div class="main">    
-    <form method="POST" action="input.php">
-        <input type="text" name="userid" class="useridbox" id="useridbox">
-        <!-- <div class="useridBox">Userid<input type="text" name="userid" class="userid" id="useridbox"></div> -->
-        <div class="dateBox">Date<input type="text" name="date" value="<?php echo date("Y-m-d H:i:s")?>"></div>
-        <div class="date1Box">Date1<input type="text" name="date1" value="<?php echo date("Y-m-d")?>"></div>
-        <div>Name<input type="text" name="name"></div>
-        <div>Spot<input type="text" name="spot"></div>
-        <div>Log<textArea name="log"></textArea></div>
-        <div>Feel<textArea name="feel"></textArea></div>
-        <input type="submit" value="送信">
-
-        <!-- <div id="buttonbox">
-            <input type="submit" value="Save" id="save">
-            <button type=button id="clear">Clear</button>
-        </div> -->
-
-    </form>
+    <div class="main mainpc">
+        <div class="memofield">
+            <form method="POST" action="input.php" class="memo">
+            <!-- <form method="POST" action="https://{$_SERVER['HTTP_HOST']}/shisha_/input.php" class="memo"> -->
+                <input type="text" name="userid" class="useridbox" id="useridbox">
+                <h1 class="dateBox">Date
+                    <input type="text" name="date" value="<?php echo date("Y-m-d H:i:s")?>">
+                </h1>
+                <h1 class="date1Box">Date1
+                    <input type="text" name="date1" value="<?php echo date("Y-m-d")?>">
+                </h1>
+                <h1 class="memotitle">Name</h1>
+                <input type="text" name="name" class="input name">
+                <h1 class="memotitle">Spot</h1>
+                <input type="text" name="spot" class="input spot">
+                <h1 class="memotitle">Flavor</h1>
+                <div class="tabox">
+                    <textArea name="log" placeholder="フレーバーを書き留める" class="log"></textArea>
+                </div>
+                <h1 class="memotitle">Feel</h1>
+                <div class="tabox">
+                    <textArea name="feel" placeholder="感動を表現する" class="feel"></textArea>
+                </div>
+                <!-- <div class="sbb"> -->
+                    <input type="submit" value="Save" class="SaveButton">
+                <!-- </div> -->
+            </form>
+        </div>
 
         <?php
         include "menu.php";
         ?>
     </div> <!-- main閉じタグ -->
 
-    <!-- メニューバー -->
-    <!-- <div class="tabarea">
-        <div class="tab1" for="tab1">
-            <h1>Memo</h1>
-        </div>
-        <div class="tab2" for="tab2">
-            <h2>SaveData</h2>
-        </div>
-    </div> -->
-            
-
-    <!-- google map api -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh6GlERuG6KGhfaLbQ7MhhkSae62zPqYE"
-    ></script>
-    
-    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase.js"></script>
-    <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyCh6GlERuG6KGhfaLbQ7MhhkSae62zPqYE",
-        authDomain: "shisha-log-9ea19.firebaseapp.com",
-        databaseURL: "https://shisha-log-9ea19.firebaseio.com",
-        projectId: "shisha-log-9ea19",
-        storageBucket: "shisha-log-9ea19.appspot.com",
-        messagingSenderId: "399008856070",
-        appId: "1:399008856070:web:ee87a7044551d89e2e6b87",
-        measurementId: "G-W0W7HRFHPD"
-    };
-      // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-      // firebase.analytics();
-
-      // リアルタイム通信;
-    let newPostRef;
-      //  firebase.database().ref('users/' +userId);
-    //   console.log(newPostRef);
-
-      //----------------------------------------------------
-      // Login Check
-      //----------------------------------------------------
-      //Firebase ログインチェック処理
-    let userId, userName, userImg;
-    firebase.auth().onAuthStateChanged(function (user) {
-        //ログインしていればuserへデータを取得
-        if (user) {
-            user = firebase.auth().currentUser; //
-            userId = user.uid;
-            // newPostRef=firebase.database().ref();
-            newPostRef = firebase.database().ref("users/" + "posts/");
-            userName = user.displayName;
-            userImg = user.photoURL;
-            
-            console.log=userId;
-            document.getElementById("useridbox").value=userId;
-        } else {
-          //Not Login
-        location.href = "login.php";
-        }
-      }); //ログインチェックの閉じタグ
+<script>
+    const getlsuserId = localStorage.getItem('lsuserId');
+    // console.log(getlsuserId);
+    const lsuserId = document.getElementById("useridbox").value=getlsuserId;
+    // console.log(lsuserId);
 
       //----------------------------------------------------
       //Sign Out
