@@ -55,6 +55,10 @@ date_default_timezone_set('Asia/Tokyo');
     </div> <!-- main閉じタグ -->
 
 <script>
+    $(window).on('load',function(){
+        $(".tab2").attr("src","css/img/penf.png");
+    });
+
     const getlsuserId = localStorage.getItem('lsuserId');
     // console.log(getlsuserId);
     const lsuserId = document.getElementById("useridbox").value=getlsuserId;

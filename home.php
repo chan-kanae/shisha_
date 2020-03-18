@@ -40,10 +40,17 @@ $json = json_encode ($stmt2->fetchAll());
     </div>
     
 <script>
+    $(window).on('load',function(){
+        $(".tab1").attr("src","css/img/homee.png");
+    });
+
     const getlsuserId = localStorage.getItem('lsuserId');
     // console.log(getlsuserId);
     const lsuserId = document.getElementById("lsuserIdbox").value=getlsuserId;
     // console.log(lsuserId);
+    if(getlsuserId===null){
+        location.href = "login.html";
+    }
 
     // jsでfor文まわしてデータ表示
     const json = <?=json_encode($json)?>;
