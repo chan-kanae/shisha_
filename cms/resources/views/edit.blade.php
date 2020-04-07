@@ -5,7 +5,6 @@
     <div class="header">
         <div class="headpen"></div>
     </div>    
-        <h1>editだよ〜</h1>
     <div class="main">
         <div class="memofield">
             <!-- <form method="POST" action="input.php" class="memo"> -->
