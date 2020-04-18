@@ -19,19 +19,36 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // ホームタイムライン画面
-Route::get('/hometl', 'MemoTemporariesController@tl')->name('hometl');
+Route::get('/hometl', 'LogsController@tl')->name('hometl');
 
 // メモ入力ページ
-Route::get('/index', 'MemoTemporariesController@index')->name('index');
+Route::get('/index', 'LogsController@index')->name('index');
 
 // 入力したメモをDBに保存
-Route::post('/post/input', 'MemoTemporariesController@input');
+Route::post('/post/input', 'LogsController@input');
 
 // 投稿を編集
-Route::post('/post/edit/{post}','MemoTemporariesController@edit');
+Route::post('/post/edit/{post}','LogsController@edit');
 
 // 投稿の編集を保存
-Route::post('/post/update','MemoTemporariesController@update');
+Route::post('/post/update','LogsController@update');
 
 // 投稿を削除
-Route::delete('/post/delete/{post}','MemoTemporariesController@delete');
+Route::delete('/post/delete/{post}','LogsController@delete');
+
+// マイページ
+Route::get('/mypage', 'LogsController@mypage')->name('mypage');
+
+// ブックマーク表示
+Route::get('/bookmark', 'LogUserController@bookmark')->name('bookmark');
+
+// ブックマーク登録
+Route::post('/bookmark', 'LogUserController@bookmarkregi');
+
+// ブックマーク削除
+Route::post('/bookmark/del', 'LogUserController@bookmarkdel');
+
+// アカウント設定ページ
+Route::post('/account', 'ImgController@account');
+
+Route::post('/account/upload','ImgController@upload');
