@@ -16,11 +16,16 @@ class LogsController extends Controller
     public function tl()
     {
         $myuserid = Auth::user()->id;
-        // echo $myuserid;
+        // echo $myuserid,' = myuserid</br>';
 
-        $posts = Log::orderBy('id', 'desc')->get();
+        $posts = Log::with('user:id,name,icon_url')
+        ->orderBy('id','desc')
+        ->get();
         // echo $posts;
-        return view('hometl',['posts' => $posts] ,['myuserid' => $myuserid]);
+
+        return view('hometl',
+        ['posts' => $posts],
+        ['myuserid' => $myuserid]);
     }
 
     public function index()
@@ -45,22 +50,20 @@ class LogsController extends Controller
         //             ->withErrors($validator);
         // }
 
-        $name = $request->name;
+        // $name = $request->name;
         $spot = $request->spot;
         $log = $request->log;
         $feel = $request->feel;
-
         $user_id = Auth::user()->id;
 
         $post = new Log;
-        $post->name = $name;
+        // $post->name = $name;
         $post->spot = $spot;
         $post->log = $log;
         $post->feel = $feel;
-        $post->userid = $user_id;
+        $post->user_id = $user_id;
         $post->save();
 
-        // $post->users()->attach($user_id);  //これなんのためのコード？
         return redirect('hometl');
     }
 
@@ -74,7 +77,7 @@ class LogsController extends Controller
     public function update( Request $request )
     {
         $post = Log::find($request->id);
-        $post->name = $request->name;
+        // $post->name = $request->name;
         $post->spot = $request->spot;
         $post->log = $request->log;
         $post->feel = $request->feel;
@@ -92,14 +95,21 @@ class LogsController extends Controller
     // マイページに遷移
     public function mypage()
     {
+        // ログインユーザー取得
+        $user = Auth::user();
+        // echo $user,' = $user</br>';
+
+        // ユーザーid取得
         $myuserid = Auth::user()->id;
-        // echo $myuserid;
-        // echo '</br>';
+        // echo $myuserid,' = $myuserid</br>';
 
-        // $myposts = Log::where('userid' == $myuserid);
-        $myposts = Log::where('userid', $myuserid)->orderBy('id', 'desc')->get();
-        // echo $myposts;
+        $myposts = Log::where('user_id', $myuserid)
+        ->orderBy('id', 'desc')
+        ->get();
+        echo $myposts,' = $myposts</br>';
 
-        return view('mypage' , ['myposts' => $myposts]);
+        return view('mypage',
+        ['myposts' => $myposts],
+        ['user' => $user]);
     }
 }

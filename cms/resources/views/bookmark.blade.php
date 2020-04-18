@@ -54,14 +54,14 @@
 
     <div class="sdarea" id="sdarea">
     @foreach ( $posts as $post)
-        @if ( $myuserid==$post->userid )
+        @if ( $myuserid==$post->user_id )
         <div class="sdbox" id="{{ $post->id }}">
-            <div class="iconbox">
-                <div class="uicon"></div>
-            </div>
+        <div class="iconbox">
+            <img src="/uploads/images/{{$post->user->icon_url}}" class="icon">
+        </div>
             <div class="sdchild">
                 <div class="sdinfo">
-                    <div class="uname">{{ $post->name }}</div>
+                    <div class="uname">{{ $post->user->name }}</div>
                     <form action="{{ url('post/edit/'.$post->id) }}" method="POST">
                     {{ csrf_field() }}
                         <button type="submit" class="edit">
@@ -73,19 +73,12 @@
                         <button type="submit" class="delete btn-dell" onClick="deletePost(this);">
                         </button>
                     </form>
-                    <!-- <form action="{{ url('/bookmark/del/'.$post->id) }}" method="POST"> -->
                     <form action="{{ url('/bookmark/del') }}" method="POST">
                     {{ csrf_field() }}
                         <input type="hidden" name="log_id" value="{{$post->id}}">
                         <button type="submit" class="bukuma bmdel" >
                         </button>
                     </form>
-                    <!-- <form action="bookmarkregi.php" method="POST">
-                        <input type="text" name="bmrUserId" value="${getlsuserId}" class="hide">
-                        <input type="text" name="memoid" value="${js_array[i].id}" class="hide">
-                        <input type="text" name="userid" value="${lsuserId}" class="hide">
-                        <input type="submit" class="bukuma">
-                    </form> -->
                 </div>
                 <div class="uspot">{{ $post->spot }} にて</div>
                 <div class="ulog">{{ $post->log }}</div>
@@ -97,11 +90,17 @@
         @else
             <div class="sdbox" id="{{ $post->id }}">
                 <div class="iconbox">
-                    <div class="uicon"></div>
+                <img src="/uploads/images/{{$post->user->icon_url}}" class="icon">
                 </div>
                 <div class="sdchild">
                     <div class="sdinfo">
-                        <div class="uname">{{ $post->name }}</div>
+                        <div class="uname">{{ $post->user->name }}</div>
+                        <form action="{{ url('/bookmark/del') }}" method="POST">
+                        {{ csrf_field() }}
+                            <input type="hidden" name="log_id" value="{{$post->id}}">
+                            <button type="submit" class="bukuma bmdel" >
+                            </button>
+                        </form>
                     </div>
                     <div class="uspot">{{ $post->spot }} にて</div>
                     <div class="ulog">{{ $post->log }}</div>

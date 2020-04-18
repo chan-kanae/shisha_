@@ -22,13 +22,23 @@ class LogUserController extends Controller
      // ブックマーク取得
     public function bookmark(Request $request)
     {
+        // ログインユーザー
+        $user = Auth::user();
+        // echo $user,'$user</br>';
+
+        // ログインユーザーid
         $myuserid = Auth::user()->id;
         // echo $myuserid,'</br>';
-        $user = User::find($myuserid);
-        // echo $user,'</br>';
-        $posts = $user->logs;
-        // echo $posts,'</br>';
-        return view ('bookmark',['posts' => $posts] ,['myuserid' => $myuserid]);
+
+        // 中間テーブル
+        $posts = $user->logs()
+        ->with('user:id,name,icon_url')
+        ->get();
+        // echo $posts,'$posts,</br>';
+
+        return view ('bookmark',
+        ['posts' => $posts],
+        ['myuserid' => $myuserid]);
     }
 
 
@@ -38,6 +48,7 @@ class LogUserController extends Controller
         // ブックマークする投稿
         $post = Log::where('id',$request->post_id)->first();
         // echo $post,' = post</br></br>';
+
         // ブックマークする投稿のpostid
         $postid = $request->post_id;
         // echo $postid,' = postid</br>';
@@ -66,9 +77,6 @@ class LogUserController extends Controller
             session()->flash('flashmessage','この投稿は既にブックマークされています');
         }
 
-        $user = User::find($myuserid);
-        $posts = $user->logs;
-
         return redirect('bookmark');
     }
 
@@ -93,69 +101,4 @@ class LogUserController extends Controller
         return redirect('bookmark')->with('bmdelmessage','ブックマークを削除しました');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\LogUser  $logUser
-     * @return \Illuminate\Http\Response
-     */
-    public function show(LogUser $logUser)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\LogUser  $logUser
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(LogUser $logUser)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\LogUser  $logUser
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, LogUser $logUser)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\MemoUser  $memoUser
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(LogUser $logUser)
-    {
-        //
-    }
 }

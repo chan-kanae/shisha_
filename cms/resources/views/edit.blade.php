@@ -17,8 +17,8 @@
                 <h1 class="date1Box">Date1
                     <input type="text" name="date1" value="<?php echo date("Y-m-d")?>">
                 </h1> -->
-                <h1 class="memotitle">Name</h1>
-                <input type="text" name="name" class="input name" value="{{$post->name}}">
+                <!-- <h1 class="memotitle">Name</h1>
+                <input type="text" name="name" class="input name" value="{{$post->name}}"> -->
                 <h1 class="memotitle">Spot</h1>
                 <input type="text" name="spot" class="input spot" value="{{$post->spot}}">
                 <h1 class="memotitle">Flavor</h1>

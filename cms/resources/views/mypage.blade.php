@@ -11,12 +11,12 @@
     <div class="sdarea" id="sdarea">
     @foreach ( $myposts as $mypost)
         <div class="sdbox" id="{{ $mypost->id }}">
-            <div class="iconbox">
-                <div class="uicon"></div>
-            </div>
+        <div class="iconbox">
+            <img src="/uploads/images/{{$user->icon_url}}" class="icon">
+        </div>
             <div class="sdchild">
                 <div class="sdinfo">
-                    <div class="uname">{{ $mypost->name }}</div>
+                    <div class="uname">{{ $user->name }}</div>
                     <form action="{{ url('post/edit/'.$mypost->id) }}" method="POST">
                     {{ csrf_field() }}
                         <button type="submit" class="edit">

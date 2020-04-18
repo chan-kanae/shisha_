@@ -46,7 +46,9 @@ Route::get('/bookmark', 'LogUserController@bookmark')->name('bookmark');
 Route::post('/bookmark', 'LogUserController@bookmarkregi');
 
 // ブックマーク削除
-// Route::post('/bookmark/del/{post}', 'LogUserController@bookmarkdel');
 Route::post('/bookmark/del', 'LogUserController@bookmarkdel');
 
+// アカウント設定ページ
+Route::post('/account', 'ImgController@account');
 
+Route::post('/account/upload','ImgController@upload');

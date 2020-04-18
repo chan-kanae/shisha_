@@ -10,9 +10,16 @@ class User extends Authenticatable
     use Notifiable;
 
     public function logs(){
-        return $this->belongsToMany('App\Models\Log','log_user','user_id','log_id')
-        ->withPivot('log_id')
-        ->orderBy('log_id', 'desc');
+        return $this->belongsToMany('App\Models\Log',
+        'log_user',
+        'user_id',
+        'log_id')
+        ->withPivot('id')
+        ->orderBy('pivot_id', 'desc');
+    }
+
+    public function log(){
+        return $this->hasMany(Log::class);
     }
 
     /**
