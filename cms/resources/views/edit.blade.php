@@ -2,10 +2,6 @@
 
 @section('content')
 <body id="body">
-    <div class="header">
-        <div class="headpen"></div>
-    </div>    
-        <h1>editだよ〜</h1>
     <div class="main">
         <div class="memofield">
             <!-- <form method="POST" action="input.php" class="memo"> -->
@@ -18,8 +14,8 @@
                 <h1 class="date1Box">Date1
                     <input type="text" name="date1" value="<?php echo date("Y-m-d")?>">
                 </h1> -->
-                <h1 class="memotitle">Name</h1>
-                <input type="text" name="name" class="input name" value="{{$post->name}}">
+                <!-- <h1 class="memotitle">Name</h1>
+                <input type="text" name="name" class="input name" value="{{$post->name}}"> -->
                 <h1 class="memotitle">Spot</h1>
                 <input type="text" name="spot" class="input spot" value="{{$post->spot}}">
                 <h1 class="memotitle">Flavor</h1>

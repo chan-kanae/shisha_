@@ -5,12 +5,12 @@
     <div class="sdarea" id="sdarea">
     @foreach ( $posts as $post)
         @if ( $myuserid==$post->user_id )
+
         <div class="sdbox" id="{{ $post->id }}">
 
             <div class="iconbox">
                 <form action="{{ url('/account') }}" method="POST">
             {{ csrf_field() }}
-                    <!-- <img src="/uploads/images/{{$post->icon_url}}" class="icon"> -->
                     <button type="submit" class="iconsubmit" >
                         <img src="/uploads/images/{{$post->user->icon_url}}" class="icon">
                     </button>
@@ -31,19 +31,12 @@
                         <button type="submit" class="delete btn-dell" onClick="deletePost(this);">
                         </button>
                     </form>
-                    <!-- <form action="{{ url('/bookmark/'.$post->id) }}" method="POST"> -->
                     <form action="{{ url('/bookmark') }}" method="POST">
                     {{ csrf_field() }}
                         <input type="hidden" name="post_id" value="{{$post->id}}">
                         <button type="submit" class="bukuma" >
                         </button>
                     </form>
-                    <!-- <form action="bookmarkregi.php" method="POST">
-                        <input type="text" name="bmrUserId" value="${getlsuserId}" class="hide">
-                        <input type="text" name="memoid" value="${js_array[i].id}" class="hide">
-                        <input type="text" name="userid" value="${lsuserId}" class="hide">
-                        <input type="submit" class="bukuma">
-                    </form> -->
                 </div>
                 <div class="uspot">{{ $post->spot }} にて</div>
                 <div class="ulog">{{ $post->log }}</div>
@@ -81,7 +74,7 @@
 
 <script>
     $(window).on('load',function(){
-        $(".tab1").attr("src","css/img/homee.png");
+        $(".searchi").attr("src","css/img/searchf.png");
     });
 
 

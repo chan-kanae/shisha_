@@ -28,7 +28,7 @@ $insert = "INSERT INTO bookmark (memo_id,user_id) SELECT :memo_id,:user_id FROM 
 $stmt = $pdo->prepare($insert);  
 $stmt->bindValue(':memo_id', $memo_id, PDO::PARAM_STR);
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-$status = $stmt->execute();//excuteの結果をいれている
+$status = $stmt->execute();
 echo 'OK';
 
 //４．データ登録処理後

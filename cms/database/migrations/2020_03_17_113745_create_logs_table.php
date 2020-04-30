@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMemoTemporariesTable extends Migration
+class CreateLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,19 @@ class CreateMemoTemporariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('memo_temporaries', function (Blueprint $table) {
+        Schema::create('logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',10)->nullable();
             $table->string('spot',40)->nullable();
             $table->string('log',80)->nullable();
             $table->string('feel',200)->nullable();
-            $table->string('userid',100)->nullable();
+            $table->unsignedinteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
+
         });
     }
 
@@ -31,6 +36,6 @@ class CreateMemoTemporariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memo_temporaries');
+        Schema::dropIfExists('logs');
     }
 }
