@@ -51,6 +51,11 @@
 </body>
 
 <script>
+    // メニューバー色変更
+    $(window).on('load',function(){
+        $(".mpi").attr("src","css/img/humann.png");
+    });
+
     $( function() {
         $(".btn-dell").click( function() {
             if( confirm ("本当に削除しますか？") ) {

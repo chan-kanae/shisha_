@@ -38,4 +38,9 @@
 
     </div> <!-- main閉じタグ -->
 </body>
+<script>
+    $(window).on('load',function(){
+        $(".tab2").attr("src","css/img/penf.png");
+    });
+</script>
 @endsection

@@ -106,10 +106,71 @@ class LogsController extends Controller
         $myposts = Log::where('user_id', $myuserid)
         ->orderBy('id', 'desc')
         ->get();
-        echo $myposts,' = $myposts</br>';
+        // echo $myposts,' = $myposts</br>';
 
         return view('mypage',
         ['myposts' => $myposts],
         ['user' => $user]);
     }
+
+    // あいまい検索view表示
+    public function searchIndex(){
+        return view ('searchIndex');
+    }
+
+    // 検索結果
+    // public function search(Request $request){
+    //     $keyword = $request->input('keyword');
+    //     // echo $keyword,'$keyword,</br>';
+
+    //     if(!empty($keyword)){
+    //         $posts = Log::where('spot', 'like', '%'.$keyword.'%')
+    //         ->orWhere('log','like','%'.$keyword.'%')
+    //         ->orWhere('feel','like','%'.$keyword.'%')
+    //         ->orderBy('id','desc')
+    //         ->get();
+    //         // echo $posts,'$posts,</br>';
+    //     }
+
+    //     $myuserid = Auth::user()->id;
+    //     // echo $myuserid,' = myuserid</br>';
+
+    //     return view('search',
+    //     // ['keyword' => $keyword],
+    //     ['posts' => $posts],
+    //     ['myuserid' => $myuserid]);
+
+    // }
+
+    public function search (Request $request){
+        $keyword = $request->input('keyword');
+        // echo $keyword;
+
+        if(!empty($keyword)){
+            // 全角スペースを半角スペースに変換
+            $keywords = str_replace("　", " ", $keyword);
+
+            // 単語をスペースで分割
+            $searchValues = preg_split('/\s+/', $keywords, -1, PREG_SPLIT_NO_EMPTY);
+            // var_dump ($searchValues);
+
+            $posts = Log::where(function ($q) use ($searchValues) {
+                foreach ($searchValues as $value) {
+                    $q->where('spot', 'like', "%{$value}%");
+                    $q->orWhere('log', 'like', "%{$value}%");
+                    $q->orWhere('feel', 'like', "%{$value}%");
+                }
+            })->get();    
+        }
+
+        $myuserid = Auth::user()->id;
+        // echo $myuserid,' = myuserid</br>';
+
+        return view('search',
+        // ['keyword' => $keyword],
+        ['posts' => $posts],
+        ['myuserid' => $myuserid]);
+    }
+
 }
+

@@ -51,4 +51,10 @@ Route::post('/bookmark/del', 'LogUserController@bookmarkdel');
 // アカウント設定ページ
 Route::post('/account', 'ImgController@account');
 
+// アイコン登録
 Route::post('/account/upload','ImgController@upload');
+
+// あいまい検索view表示
+Route::get('/searchindex','LogsController@searchIndex');
+
+Route::post('search','LogsController@search');
