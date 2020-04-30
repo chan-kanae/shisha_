@@ -114,6 +114,10 @@
 </body>
 
 <script>
+    $(window).on('load',function(){
+        $(".bmi").attr("src","css/img/bmf.png");
+    });
+
     // 投稿削除
     $( function() {
         $(".btn-dell").click( function() {

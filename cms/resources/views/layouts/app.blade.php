@@ -77,7 +77,6 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
     </div>
 
@@ -108,6 +107,27 @@
         </div>
     @endif
 
+    <div class="main">
+        <div class="tabarea">
+            <a href="hometl">
+                <img src="css/img/homegol.png" class="tab1">
+            </a>
+            <a href="searchindex">
+                <img src="css/img/searchol.png" class="searchi">
+            </a>
+            <a href="index">
+                <img src="css/img/pencilgol.png" class="tab2">
+            </a>
+            <a href="mypage" class="mp">
+                <img src="css/img/humangol.png" class="mpi">
+            </a>
+            <a href="bookmark" class="bm">
+                <img src="css/img/bmgol.png" class="bmi">
+            </a>
+        </div> 
+    </div>
+
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
@@ -116,14 +136,7 @@
         $(window).on('load',function(){
             $('#myModal').modal('show');
         });
-
-
-
-
-
     </script>
-
-
     @yield('script')
 </body>
 </html>

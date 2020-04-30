@@ -2,9 +2,6 @@
 
 @section('content')
 <body id="body">
-    <div class="header">
-        <div class="headpen"></div>
-    </div>    
     <div class="main">
         <div class="memofield">
             <!-- <form method="POST" action="input.php" class="memo"> -->
