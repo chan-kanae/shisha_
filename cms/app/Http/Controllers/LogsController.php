@@ -9,9 +9,17 @@ use App\Models\Log;
 use App\Models\User;
 use Auth;
 use Validator;
+use Socialite; // 追記
+
 
 class LogsController extends Controller
 {
+    // public function test()
+    // {
+    //     return view ('test');
+    // }
+
+
     // 投稿全件取得
     public function tl()
     {
@@ -50,14 +58,12 @@ class LogsController extends Controller
         //             ->withErrors($validator);
         // }
 
-        // $name = $request->name;
         $spot = $request->spot;
         $log = $request->log;
         $feel = $request->feel;
         $user_id = Auth::user()->id;
 
         $post = new Log;
-        // $post->name = $name;
         $post->spot = $spot;
         $post->log = $log;
         $post->feel = $feel;
@@ -95,10 +101,6 @@ class LogsController extends Controller
     // マイページに遷移
     public function mypage()
     {
-        // ログインユーザー取得
-        $user = Auth::user();
-        // echo $user,' = $user</br>';
-
         // ユーザーid取得
         $myuserid = Auth::user()->id;
         // echo $myuserid,' = $myuserid</br>';
@@ -108,9 +110,14 @@ class LogsController extends Controller
         ->get();
         // echo $myposts,' = $myposts</br>';
 
+        $myicon = Auth::user()->icon_url;
+        // echo $myicon;
+
+        $myname = Auth::user()->name;
+        // echo $myname;
+
         return view('mypage',
-        ['myposts' => $myposts],
-        ['user' => $user]);
+        compact('myname','myicon','myposts'));
     }
 
     // あいまい検索view表示
@@ -119,29 +126,6 @@ class LogsController extends Controller
     }
 
     // 検索結果
-    // public function search(Request $request){
-    //     $keyword = $request->input('keyword');
-    //     // echo $keyword,'$keyword,</br>';
-
-    //     if(!empty($keyword)){
-    //         $posts = Log::where('spot', 'like', '%'.$keyword.'%')
-    //         ->orWhere('log','like','%'.$keyword.'%')
-    //         ->orWhere('feel','like','%'.$keyword.'%')
-    //         ->orderBy('id','desc')
-    //         ->get();
-    //         // echo $posts,'$posts,</br>';
-    //     }
-
-    //     $myuserid = Auth::user()->id;
-    //     // echo $myuserid,' = myuserid</br>';
-
-    //     return view('search',
-    //     // ['keyword' => $keyword],
-    //     ['posts' => $posts],
-    //     ['myuserid' => $myuserid]);
-
-    // }
-
     public function search (Request $request){
         $keyword = $request->input('keyword');
         // echo $keyword;
@@ -160,14 +144,44 @@ class LogsController extends Controller
                     $q->orWhere('log', 'like', "%{$value}%");
                     $q->orWhere('feel', 'like', "%{$value}%");
                 }
-            })->get();    
+            })
+            ->orderBy('id','desc')
+            ->get();
+            // echo $posts;
         }
 
         $myuserid = Auth::user()->id;
         // echo $myuserid,' = myuserid</br>';
 
+        $arr = "[]";
+        if ($posts == $arr){
+            // session()->flash('flashmessage','検索結果はありません');
+            // $message = '検索結果はありません';
+        }
+
         return view('search',
         // ['keyword' => $keyword],
+        ['posts' => $posts],
+        ['myuserid' => $myuserid]);
+    }
+
+    // 各ユーザーページ
+    public function person(Request $request){
+        $log_userid = $request->log_userid;
+        // echo $log_userid,'$log_userid</br>';
+
+        // logテーブルからuser_idが$log_useridと一致している投稿を取得
+        $posts = Log::where('user_id', $log_userid)
+        ->with('user:id,name,icon_url')
+        ->orderBy('id', 'desc')
+        ->get();
+        // echo $posts,'$posts</br>';
+
+        $myuserid = Auth::user()->id;
+
+        $back = url()->previous();
+
+        return view ('person',
         ['posts' => $posts],
         ['myuserid' => $myuserid]);
     }

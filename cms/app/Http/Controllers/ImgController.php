@@ -13,7 +13,9 @@ class ImgController extends Controller
 {
     // view表示
     public function account(){
-        return view ('account');
+        $name = Auth::user()->name;
+        return view ('account',
+        compact('name'));
     }
 
     // 画像保存処理
@@ -28,6 +30,12 @@ class ImgController extends Controller
         
         // ログインユーザー取得
         $user = Auth::user();
+
+        $name = $request->name;
+        if( !empty($name) ){
+            $user->name = $name;
+            $user->save();
+        }
 
         if ( !empty($file) ) {
 
@@ -44,7 +52,7 @@ class ImgController extends Controller
             //ファイル名をpublic/uploadフォルダに移動
             $move = $file->move('./uploads/images/',$fileName);
         }else{
-            return redirect('/home');
+            return redirect('/hometl');
         }
         return redirect('/hometl');
     }

@@ -16,7 +16,7 @@ class Log extends Model
         ->orderBy('pivot_id', 'desc');
     }
 
-    public function user(){
+    public function userss(){
         return $this->belongsTo(User::class);
     }
 

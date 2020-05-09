@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<body id="body">
+<!-- <body id="body"> -->
     @if(Session::has('flashmessage'))
         <!-- モーダルウィンドウの中身 -->
         <div class="modal fade" id="myModal" tabindex="-1"
@@ -41,5 +41,5 @@
             </div>
         </form>
     </div><!-- /container -->
-</body>
+<!-- </body> -->
 @endsection

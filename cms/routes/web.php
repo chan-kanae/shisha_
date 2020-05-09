@@ -16,6 +16,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Googleログイン
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
+Route::get('test', 'Auth\LoginController@handleGoogleCallback');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 // ホームタイムライン画面
@@ -57,4 +61,11 @@ Route::post('/account/upload','ImgController@upload');
 // あいまい検索view表示
 Route::get('/searchindex','LogsController@searchIndex');
 
+// 検索結果
 Route::post('search','LogsController@search');
+
+// インクリメンタルサーチ
+// Route::post('/post/input', 'FlavorsController@search_ajax');
+
+// 各ユーザーページ
+Route::post('person','LogsController@person');

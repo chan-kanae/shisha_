@@ -7,13 +7,11 @@ body{
     background-repeat: repeat;
     object-fit: contain;
     width: 100%;
-    height: auto;
+    height: 100%;
     text-align: left;
     font-size: 20px;
     font-family:'Noto Sans JP','Helvetica','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','Arial',sans-serif;
 }
-
-/* @media screen and (max-width:480px){ */
 .header{
     width: 100%;
     height: 30px;
@@ -298,17 +296,26 @@ body{
     justify-content: center;
     display: block;
     margin: auto;
+    height: 80vh;
+    position: relative;
 }
 .memo{
     text-align: center;
     margin: auto;
-    padding: 20px 15px;
+    padding: 40px 15px;
     /* background: #f1feff; */
     background: #fff;
     width: 92%;
     /* height: 100%; */
     filter: drop-shadow(0 0 4px #585858);
     border-radius: 6px;
+    justify-self: center;
+    align-self: center;
+    position: absolute;          /* 位置指定 */
+    top: 50%;                    /* 親要素の半分下にずらす */
+    left: 50%;                   /* 親要素の半分右にずらす */
+    transform: translateY(-50%) translateX(-50%);
+
 }
 .dateBox{
     display: none;
@@ -381,7 +388,6 @@ body{
     background-color: #F95D00;   
     display: inline-block;
     text-align: center;
-    /* width: 80px; */
     font-size: 22px;
     font-weight: 600;
     color: #fff;
@@ -477,5 +483,23 @@ body{
     background-position: center;
     background-repeat: no-repeat;
 }
-
+button{
+    padding: 0; /* ボタンにデフォルトでついてるパディングを外す */
+}
+.account-edit{
+    padding: 5px 15px 5px 25px;
+}
+.account{
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.submit-btn{
+    margin-top: 30px;
+    font-size: 20px;
+    letter-spacing: 0.1px;
+}
+.s-b-save{
+    margin-left: 20px;
+}
 /* } iPhone */

@@ -1,8 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-    @if( $posts == "[]")
-        <h2 class="text-center" style="margin-top:50%;">検索結果はありません</h2>
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
+
+    @if(Session::has('flashmessage'))
+        <!-- モーダルウィンドウの中身 -->
+        <div class="modal fade" id="myModal" tabindex="-1"
+            role="dialog" aria-labelledby="label1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        {{ session('flashmessage') }}
+                    </div>
+                    <div class="modal-footer text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if(Session::has('bmdelmessage'))
+        <!-- モーダルウィンドウの中身 -->
+        <div class="modal fade" id="myModal" tabindex="-1"
+            role="dialog" aria-labelledby="label1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        {{ session('bmdelmessage') }}
+                    </div>
+                    <div class="modal-footer text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
 
     <div class="sdarea" id="sdarea">
@@ -91,12 +136,11 @@
 
 
 <script>
-    // $(window).on('load',function(){
-    //     $(".searchi").attr("src","css/img/searchf.png");
-    // });
+    $(window).on('load',function(){
+        $(".tab1").attr("src","css/img/homee.png");
+    });
 
-
-    // 投稿削除確認
+    // 投稿削除
     $( function() {
         $(".btn-dell").click( function() {
             if( confirm ("本当に削除しますか？") ) {
@@ -105,7 +149,22 @@
             }
         });
     });
-</script>
 
+    // ブックマーク削除
+    $( function() {
+        $(".bmdel").click( function() {
+            if( confirm ("本当にブックマークから削除しますか？") ) {
+            } else {
+            return false;
+            }
+        });
+    });
+
+    // モーダルウィンドウ
+    $(window).on('load',function(){
+        $('#myModal').modal('show');
+    });
+
+</script>
 @endsection
 

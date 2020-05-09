@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// インクリメンタルサーチ
+// Route::post('/post/input', 'FlavorsController@search_ajax');
