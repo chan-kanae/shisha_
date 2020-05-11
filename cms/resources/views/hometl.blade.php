@@ -10,7 +10,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="log_userid" value="{{$post->user->id}}">
                         <button type="submit" class="">
-                            <img src="/uploads/images/{{$post->user->icon_url}}" class="icon">
+                            <img src="{{$post->user->icon_url}}" class="icon">
                         </button>
                     </form>
                 </div>
@@ -24,7 +24,7 @@
                                 <div class="uname">{{ $post->user->name }}</div>
                             </button>
                         </form>
-                        <form action="{{ url('post/edit/'.$post->id) }}" method="POST">
+                        <form action="{{ url('postedit'.$post->id) }}" method="POST">
                             {{ csrf_field() }}
                             <button type="submit" class="edit">
                             </button>
@@ -35,7 +35,6 @@
                             <button type="submit" class="delete btn-dell" onClick="deletePost(this);">
                             </button>
                         </form>
-                        <!-- <form action="{{ url('/bookmark/'.$post->id) }}" method="POST"> -->
                         <form action="{{ url('/bookmark') }}" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" name="post_id" value="{{$post->id}}">
@@ -56,7 +55,7 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="log_userid" value="{{$post->user->id}}">
                     <button type="submit" class="">
-                        <img src="/uploads/images/{{$post->user->icon_url}}" class="icon">
+                        <img src="{{$post->user->icon_url}}" class="icon">
                     </button>
                 </form>
             </div>
@@ -69,12 +68,14 @@
                                 <div class="uname">{{ $post->user->name }}</div>
                             </button>
                         </form>
+
                         <form action="{{ url('/bookmark') }}" method="POST">
                             {{ csrf_field() }}
-                        <input type="hidden" name="post_id" value="{{$post->id}}">
-                        <button type="submit" class="bukuma" >
-                        </button>
-                    </form>
+                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                            <button type="submit" class="bukuma" >
+                            </button>
+                        </form>
+
                     </div>
                     <div class="uspot">{{ $post->spot }} にて</div>
                     <div class="ulog">{{ $post->log }}</div>

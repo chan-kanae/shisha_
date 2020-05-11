@@ -18,10 +18,10 @@
             <h1 class="memotitle">Name</h1>
             <input type="text" name="name" class="input spot" value="{{$name}}">
 
-            <h1 class="memotitle">Icon</h1>
+            <!-- <h1 class="memotitle">Icon</h1>
             <div class="form-group">
                 <input id="fileUploader" type="file" name="img" accept='image/*' enctype="multipart/form-data" multiple="multiple" required autofocus class="account">
-            </div>
+            </div> -->
             <a href="hometl">
                 <button type="button" class="btn btn-default submit-btn">Cancel</button>
             </a>

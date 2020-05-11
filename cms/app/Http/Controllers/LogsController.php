@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Log;
 use App\Models\User;
+use App\Models\LogUser;
 use Auth;
 use Validator;
 use Socialite; // 追記
@@ -14,11 +15,10 @@ use Socialite; // 追記
 
 class LogsController extends Controller
 {
-    // public function test()
-    // {
-    //     return view ('test');
-    // }
-
+    public function test()
+    {
+        return view ('test');
+    }
 
     // 投稿全件取得
     public function tl()
@@ -33,7 +33,11 @@ class LogsController extends Controller
 
         return view('hometl',
         ['posts' => $posts],
-        ['myuserid' => $myuserid]);
+        ['myuserid' => $myuserid],
+        );
+
+        // return view('hometl',
+        // compact('posts','myuserid','check'));
     }
 
     public function index()

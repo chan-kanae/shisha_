@@ -10,6 +10,11 @@
 
     <title>{{ config('app.name', 'SHISHA Log') }}</title>
 
+    <link rel="shortcut icon" href="{{ asset('/favicon_takaya_yoshida.ico') }}">
+    <link rel="apple-touch-icon" href="favicon_180.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="favicon_192.png" sizes="192x192">
+
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -19,6 +24,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
     <div id="app">
@@ -35,9 +41,15 @@
                     </button>
 
                     <!-- Branding Image -->
+                    @auth
                     <a class="navbar-brand" href="{{ url('/hometl') }}">
                         {{ config('app.name', 'SHISHA Log') }}
                     </a>
+                    @else
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'SHISHA Log') }}
+                    </a>
+                    @endauth
 
                 </div>
 

@@ -51,13 +51,46 @@ class LoginController extends Controller
     public function handleGoogleCallback()
     {
         // Google 認証後の処理
-        // あとで処理を追加しますが、とりあえず dd() で取得するユーザー情報を確認
-        // $gUser = Socialite::driver('google')->stateless()->user(); //エラーにならない
-        $gUser = Socialite::driver('google')->user(); //エラーになる
-        // $gUser = Socialite::driver('google'); //エラーにらない
+        $gUser = Socialite::driver('google')->user();
         var_dump ($gUser);
-        return view ('test');
 
+        $id = $gUser->getid();
+        // echo $id;
+
+        // email が合致するユーザーを取得
+        $user = User::where('email', $gUser->email)->first();
+        // 見つからなければ新しくユーザーを作成
+        if ($user == null) {
+            $user = $this->createUserByGoogle($gUser);
+        }
+        // ログイン処理
+        \Auth::login($user, true);
+
+        return redirect ('hometl');
+    }
+
+    public function createUserByGoogle($gUser)
+    {
+        // $user = User::create([
+        //     'name'     => $gUser->name,
+        //     'email'    => $gUser->email,
+        //     'userid'   => $gUser->id,
+        //     'icon_url'  => $gUser->avatar,
+        //     'password' => \Hash::make(uniqid()),
+        // ]);
+
+        $user = new User();
+        $user->name = $gUser->name;
+        $user->email = $gUser->email;
+        $user->userid = $gUser->id;
+        $user->icon_url = $gUser->avatar;
+        $user->save();
+
+        $id = $gUser->id;
+        // echo ($id);
+        $icon = $gUser->avatar;
+        // echo ($icon);
+        return $user;
     }
 
 }

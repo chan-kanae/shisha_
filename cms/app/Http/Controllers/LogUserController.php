@@ -83,20 +83,23 @@ class LogUserController extends Controller
     // ブックマーク削除
     public function bookmarkdel(Request $request)
     {
-        // ブックマーク削除する投稿
-        $post = Log::where('id',$request->log_id)->first();
+        // ログインユーザーを取得
+        $myuserid = Auth::user();
+        echo $myuserid,'$myuserid</br>';
 
         // ブックマークする投稿のpostid
-        $postid = $request->log_id;
+        $postid = $request->post_id;
+        echo ($postid),'$postid</br>';
 
-        // ログインユーザーを取得
-        $myuserid = Auth::user()->id;
+        // ブックマーク削除する投稿
+        $post = Log::where('id',$request->post_id)->first();
+        echo ($post),'$post</br>';
 
         // リレーション解除
         $post->users()->detach($myuserid);
 
-        $user = User::find($myuserid);
-        $posts = $user->logs;
+        // $user = User::find($myuserid);
+        // $posts = $user->logs;
 
         return redirect('bookmark')->with('bmdelmessage','ブックマークを削除しました');
     }

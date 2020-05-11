@@ -15,7 +15,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="log_userid" value="{{$mypost->user->id}}">
                         <button type="submit" class="">
-                            <img src="/uploads/images/{{$mypost->user->icon_url}}" class="icon">
+                            <img src="{{$mypost->user->icon_url}}" class="icon">
                         </button>
                     </form>
                 </div>

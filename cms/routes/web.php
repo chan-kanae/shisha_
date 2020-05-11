@@ -11,14 +11,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Auth::routes();
 
 // Googleログイン
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
-Route::get('test', 'Auth\LoginController@handleGoogleCallback');
+Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
+Route::get('/test', 'LogsController@test')->name('test');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -32,7 +34,7 @@ Route::get('/index', 'LogsController@index')->name('index');
 Route::post('/post/input', 'LogsController@input');
 
 // 投稿を編集
-Route::post('/post/edit/{post}','LogsController@edit');
+Route::post('/postedit{post}','LogsController@edit');
 
 // 投稿の編集を保存
 Route::post('/post/update','LogsController@update');
