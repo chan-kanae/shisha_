@@ -22,6 +22,7 @@ define('LARAVEL_START', microtime(true));
 */
 
 require __DIR__.'/../vendor/autoload.php';
+// require __DIR__.'/../../shishalog/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ require __DIR__.'/../vendor/autoload.php';
 */
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
+// $app = require_once __DIR__.'/../../shishalog/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------

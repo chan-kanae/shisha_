@@ -9,7 +9,7 @@
                     <form action="{{ url('person') }}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="log_userid" value="{{$post->user->id}}">
-                        <button type="submit" class="">
+                        <button type="submit" class="submitButton">
                             <img src="{{$post->user->icon_url}}" class="icon">
                         </button>
                     </form>
@@ -20,7 +20,7 @@
                         <form action="{{ url('person') }}" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" name="log_userid" value="{{$post->user->id}}">
-                            <button type="submit" class="">
+                            <button type="submit" class="submitButton">
                                 <div class="uname">{{ $post->user->name }}</div>
                             </button>
                         </form>
@@ -51,20 +51,30 @@
         @else
             <div class="sdbox" id="{{ $post->id }}">
             <div class="iconbox">
+                @if( $post->user->icon_url == null )
+                    <form action="{{ url('person') }}" method="POST">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="log_userid" value="{{$post->user->id}}">
+                        <button type="submit" class="submitButton">
+                            <div class="uicon"></div>
+                        </button>
+                    </form>
+                @else
                 <form action="{{ url('person') }}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="log_userid" value="{{$post->user->id}}">
-                    <button type="submit" class="">
+                    <button type="submit" class="submitButton">
                         <img src="{{$post->user->icon_url}}" class="icon">
                     </button>
                 </form>
+                @endif
             </div>
                 <div class="sdchild">
                     <div class="sdinfo">
                         <form action="{{ url('person') }}" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" name="log_userid" value="{{$post->user->id}}">
-                            <button type="submit" class="">
+                            <button type="submit" class="submitButton">
                                 <div class="uname">{{ $post->user->name }}</div>
                             </button>
                         </form>
