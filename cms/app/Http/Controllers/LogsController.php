@@ -29,7 +29,7 @@ class LogsController extends Controller
         $posts = Log::with('user:id,name,icon_url')
         ->orderBy('id','desc')
         ->get();
-        // echo $posts;
+        // echo( $posts);
 
         return view('hometl',
         ['posts' => $posts],
