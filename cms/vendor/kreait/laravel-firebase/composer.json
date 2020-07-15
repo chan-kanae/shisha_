@@ -1,0 +1,45 @@
+{
+    "name": "kreait/laravel-firebase",
+    "description": "A Laravel package for the Firebase PHP Admin SDK",
+    "keywords": ["laravel", "firebase", "fcm", "gcm"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jérôme Gamez",
+            "email": "jerome@gamez.name"
+        }
+    ],
+    "require": {
+        "kreait/firebase-php": "^5.0",
+        "illuminate/contracts": "^5.8|^6.0|^7.0",
+        "illuminate/support": "^5.8|^6.0|^7.0"
+    },
+    "require-dev": {
+        "laravel/lumen-framework": "^5.8|^6.0|^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kreait\\Laravel\\Firebase\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Kreait\\Laravel\\Firebase\\ServiceProvider"
+            ],
+            "aliases": {
+                "FirebaseAuth": "Kreait\\Laravel\\Firebase\\Facades\\FirebaseAuth",
+                "FirebaseDatabase": "Kreait\\Laravel\\Firebase\\Facades\\FirebaseDatabase",
+                "FirebaseDynamicLinks": "Kreait\\Laravel\\Firebase\\Facades\\FirebaseDynamicLinks",
+                "FirebaseFirestore": "Kreait\\Laravel\\Firebase\\Facades\\FirebaseFirestore",
+                "FirebaseMessaging": "Kreait\\Laravel\\Firebase\\Facades\\FirebaseMessaging",
+                "FirebaseRemoteConfig": "Kreait\\Laravel\\Firebase\\Facades\\FirebaseRemoteConfig",
+                "FirebaseStorage": "Kreait\\Laravel\\Firebase\\Facades\\FirebaseStorage"
+            }
+        }
+    }
+}

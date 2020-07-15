@@ -87,6 +87,7 @@
                                     </div>
                                 </div>
                             </form> -->
+                            <h3 class="shishalog-title">SHISHA Log</h3>
 
                             <img src="css/img/takaya_yoshida_bg_white.jpg" alt="" class="takayayoshida">
 

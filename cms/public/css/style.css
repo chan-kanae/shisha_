@@ -31,6 +31,12 @@ body{
 .login-panel-body{
     border: none;
 }
+.shishalog-title{
+    text-align: center;
+    font-size: 60px;
+    font-weight: 700;
+    color: #3D474D;
+}
 .takayayoshida{
     display: block;
     
@@ -173,11 +179,16 @@ body{
     width: 50px;
     height: 50px;
     border-radius: 40px;
-    /* background: #c7dcdd; */
-    /* border: solid 1px #dbdbdb; */
     margin-top: 5px;
     top: 0px;
+    border: none;
+    background: #fff;
+}
 
+.submitButton{
+    -webkit-appearance: none;
+    border: none;
+    background: #fff;
 }
 
 .sdchild{
@@ -336,7 +347,6 @@ body{
     display: block;
     margin: auto;
     height: 80vh;
-    position: relative;
 }
 .memo{
     text-align: center;
@@ -350,10 +360,6 @@ body{
     border-radius: 6px;
     justify-self: center;
     align-self: center;
-    position: absolute;          /* 位置指定 */
-    top: 50%;                    /* 親要素の半分下にずらす */
-    left: 50%;                   /* 親要素の半分右にずらす */
-    transform: translateY(-50%) translateX(-50%);
 }
 .dateBox{
     display: none;
@@ -418,9 +424,6 @@ body{
     letter-spacing: 1px;
     line-height: 22px;
 }
-/* .sbb{
-    text-align: center;
-} */
 .SaveButton{
     -webkit-appearance: none;
     background-color: #F95D00;   
@@ -441,7 +444,7 @@ body{
 /* menu.php */
 .tabarea{
     width: 100%;
-    height: 38px;
+    height: 50px;
     background: #FFF;
     z-index: 6;
     justify-content: space-around;
@@ -450,7 +453,7 @@ body{
     display: flex;
     text-align: center;
     user-select: none;
-    /* padding-top: 10px; */
+    padding-top: 5px;
     border-top: 1px solid #adc1c2;
 }
 .tab1{
@@ -525,7 +528,10 @@ button{
     padding: 0; /* ボタンにデフォルトでついてるパディングを外す */
 }
 .account-edit{
+    -webkit-appearance: none;
     padding: 5px 15px 5px 25px;
+    border: none;
+    background: #fff;
 }
 .account{
     margin-top: 5px;
@@ -543,4 +549,4 @@ button{
 .s-b-save{
     margin-left: 20px;
 }
-/* } iPhone */
+/*  iPhone */

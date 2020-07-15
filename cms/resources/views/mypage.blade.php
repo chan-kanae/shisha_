@@ -14,7 +14,7 @@
                     <form action="{{ url('person') }}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="log_userid" value="{{$mypost->user->id}}">
-                        <button type="submit" class="">
+                        <button type="submit" class="submitButton">
                             <img src="{{$mypost->user->icon_url}}" class="icon">
                         </button>
                     </form>
@@ -24,7 +24,7 @@
                     <form action="{{ url('person') }}" method="POST">
                         {{ csrf_field() }}
                             <input type="hidden" name="log_userid" value="{{$mypost->user->id}}">
-                            <button type="submit" class="">
+                            <button type="submit" class="submitButton">
                                 <div class="uname">{{ $mypost->user->name }}</div>
                             </button>
                         </form>
